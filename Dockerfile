@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine AS build
+FROM node:18.20-alpine AS build
 WORKDIR /usr/src/app
 COPY . .
 RUN corepack enable
@@ -8,7 +8,7 @@ USER node
 RUN pnpm install --silent --frozen-lockfile
 RUN pnpm run build
 
-FROM node:18.12.1-alpine AS production
+FROM node:18.20-alpine AS production
 ENV NODE_ENV=production
 ENV PORT=3000
 WORKDIR /usr/src/app
